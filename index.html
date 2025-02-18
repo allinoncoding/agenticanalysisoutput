@@ -1,422 +1,406 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Disparities: Data-Backed Evidence</title>
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Base Styling */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 1em;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.2em;
+    }
+    h2 {
+      font-size: 1.6em;
+      margin-top: 1.5em;
+      padding-bottom: 0.3em;
+      border-bottom: 2px solid #ddd;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    p {
+      padding: 0 10px;
+      text-align: justify;
+      margin-bottom: 1em;
+    }
+    .chart-container {
+      position: relative;
+      margin: 20px auto;
+      height: 300px;
+      width: 90%;
+    }
+    .source {
+      font-size: 0.85em;
+      text-align: center;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      .chart-container {
+        height: 250px;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Social Disparities: Data-Backed Evidence&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Chart.js Library --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* Base Styling */</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #f5f5f5;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 800px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 20px auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px 30px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h1, h2 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.2em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h2 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.6em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1.5em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 0.3em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 2px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>section {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 40px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: justify;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.chart-container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 20px auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 300px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 90%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.source {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #555;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 600px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.chart-container {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>height: 250px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Social Disparities: Data-Backed Evidence&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Wealth Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="wealth-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Wealth Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>In Q4 2023, African Americans had a median net worth of &lt;strong&gt;$44,900&lt;/strong&gt; compared to &lt;strong&gt;$285,000&lt;/strong&gt; for White Americans. This equates to a ratio of approximately &lt;strong&gt;6.3x&lt;/strong&gt;.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="wealthChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: Fed DFA – Board of Governors of the Federal Reserve System, Distributional Financial Accounts (Q4 2023)</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Income Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="income-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Income Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>In 2022, the median household income was &lt;strong&gt;$52,860&lt;/strong&gt; for African Americans and &lt;strong&gt;$77,999&lt;/strong&gt; for White Americans – about a &lt;strong&gt;1.5x&lt;/strong&gt; difference.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="incomeChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: U.S. Census Bureau, Income in the United States: 2022</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Education Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="education-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Education Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>In 2021, 30% of African Americans (age 25+) held a bachelor's degree or higher compared to 42% of White Americans.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="educationChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: National Center for Education Statistics (2021)</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Employment Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="employment-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Employment Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>As of September 2023, the unemployment rate was 5.8% for African Americans versus 3.3% for White Americans.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="employmentChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: Bureau of Labor Statistics, The Employment Situation — September 2023</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Housing Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="housing-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Housing Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>In Q2 2023, the homeownership rate was 46.1% for African Americans compared to 75.3% for White Americans – a difference of roughly 29.2 percentage points.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="housingChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: U.S. Census Bureau, Housing Vacancies and Homeownership, Q2 2023</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Healthcare Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="healthcare-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Healthcare Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Disparities are evident in healthcare access and outcomes. In 2022, 8.1% of African Americans (ages 18–64) were uninsured compared to 4.8% of White Americans. Furthermore, in 2021, life expectancy was 70.8 years for African Americans versus 76.4 years for White Americans.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="uninsuredChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: CDC, National Center for Health Statistics – Uninsured Rate (2022)</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="lifeExpectancyChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: National Vital Statistics Reports – Life Expectancy (2021)</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Criminal Justice Disparity Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="criminal-justice-disparity"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2&gt;Criminal Justice Disparity&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>In 2020, the incarceration rate was 1,186 per 100k for African Americans versus 216 per 100k for White Americans. Additionally, in 2023 (year-to-date), African Americans experienced police killings at a rate approximately 2.6 times higher than the reference rate for White Americans.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="incarcerationChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: Bureau of Justice Statistics, Prisoners in 2020 – Statistical Tables</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="chart-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;canvas id="policeKillingsChart"&gt;&lt;/canvas&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="source"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Source: Mapping Police Violence (2023, YTD)</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- JavaScript for Charts --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Wealth Disparity Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const wealthCtx = document.getElementById('wealthChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(wealthCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Median Net Worth ($K)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [44.9, 285],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Value in $K' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Income Disparity Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const incomeCtx = document.getElementById('incomeChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(incomeCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Median Household Income ($K)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [52.9, 78.0],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(255, 159, 64, 0.7)', 'rgba(75, 192, 192, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Value in $K' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Education Disparity Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const educationCtx = document.getElementById('educationChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(educationCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: "Bachelor's Degree or Higher (%)",</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [30, 42],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(153, 102, 255, 0.7)', 'rgba(255, 205, 86, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max: 100,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Percentage (%)' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Employment Disparity Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const employmentCtx = document.getElementById('employmentChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(employmentCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Unemployment Rate (%)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [5.8, 3.3],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Percentage (%)' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Housing Disparity Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const housingCtx = document.getElementById('housingChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(housingCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Homeownership Rate (%)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [46.1, 75.3],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(255, 159, 64, 0.7)', 'rgba(75, 192, 192, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max: 100,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Percentage (%)' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Healthcare Disparity - Uninsured Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const uninsuredCtx = document.getElementById('uninsuredChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(uninsuredCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Uninsured Rate (%)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [8.1, 4.8],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(153, 102, 255, 0.7)', 'rgba(255, 205, 86, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Percentage (%)' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Healthcare Disparity - Life Expectancy Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const lifeExpectancyCtx = document.getElementById('lifeExpectancyChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(lifeExpectancyCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Life Expectancy (Years)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [70.8, 76.4],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: false,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Years' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Criminal Justice Disparity - Incarceration Rate Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const incarcerationCtx = document.getElementById('incarcerationChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(incarcerationCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['African Americans', 'White Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Incarceration Rate (per 100k)',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [1186, 216],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(75, 192, 192, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Rate per 100k' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// Criminal Justice Disparity - Police Killings Rate Chart</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const policeKillingsCtx = document.getElementById('policeKillingsChart').getContext('2d');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>new Chart(policeKillingsCtx, {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>type: 'bar',</p>
-<p class="p1"><span class="Apple-converted-space">      </span>data: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>labels: ['White Americans (Baseline)', 'African Americans'],</p>
-<p class="p1"><span class="Apple-converted-space">        </span>datasets: [{</p>
-<p class="p1"><span class="Apple-converted-space">          </span>label: 'Relative Police Killings Rate',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>data: [1, 2.6],</p>
-<p class="p1"><span class="Apple-converted-space">          </span>backgroundColor: ['rgba(75, 192, 192, 0.7)', 'rgba(255, 99, 132, 0.7)']</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}]</p>
-<p class="p1"><span class="Apple-converted-space">      </span>},</p>
-<p class="p1"><span class="Apple-converted-space">      </span>options: {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>scales: {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>y: {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>beginAtZero: true,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>title: { display: true, text: 'Relative Rate (White = 1)' }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>},</p>
-<p class="p1"><span class="Apple-converted-space">        </span>responsive: true,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>maintainAspectRatio: false</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <div class="container">
+    <h1>Social Disparities: Data-Backed Evidence</h1>
+
+    <!-- Wealth Disparity Section -->
+    <section id="wealth-disparity">
+      <h2>Wealth Disparity</h2>
+      <p>
+        In Q4 2023, African Americans had a median net worth of <strong>$44,900</strong> compared to <strong>$285,000</strong> for White Americans. This equates to a ratio of approximately <strong>6.3x</strong>.
+      </p>
+      <div class="chart-container">
+        <canvas id="wealthChart"></canvas>
+      </div>
+      <p class="source">
+        Source: Fed DFA – Board of Governors of the Federal Reserve System, Distributional Financial Accounts (Q4 2023)
+      </p>
+    </section>
+
+    <!-- Income Disparity Section -->
+    <section id="income-disparity">
+      <h2>Income Disparity</h2>
+      <p>
+        In 2022, the median household income was <strong>$52,860</strong> for African Americans and <strong>$77,999</strong> for White Americans – about a <strong>1.5x</strong> difference.
+      </p>
+      <div class="chart-container">
+        <canvas id="incomeChart"></canvas>
+      </div>
+      <p class="source">
+        Source: U.S. Census Bureau, Income in the United States: 2022
+      </p>
+    </section>
+
+    <!-- Education Disparity Section -->
+    <section id="education-disparity">
+      <h2>Education Disparity</h2>
+      <p>
+        In 2021, 30% of African Americans (age 25+) held a bachelor's degree or higher compared to 42% of White Americans.
+      </p>
+      <div class="chart-container">
+        <canvas id="educationChart"></canvas>
+      </div>
+      <p class="source">
+        Source: National Center for Education Statistics (2021)
+      </p>
+    </section>
+
+    <!-- Employment Disparity Section -->
+    <section id="employment-disparity">
+      <h2>Employment Disparity</h2>
+      <p>
+        As of September 2023, the unemployment rate was 5.8% for African Americans versus 3.3% for White Americans.
+      </p>
+      <div class="chart-container">
+        <canvas id="employmentChart"></canvas>
+      </div>
+      <p class="source">
+        Source: Bureau of Labor Statistics, The Employment Situation — September 2023
+      </p>
+    </section>
+
+    <!-- Housing Disparity Section -->
+    <section id="housing-disparity">
+      <h2>Housing Disparity</h2>
+      <p>
+        In Q2 2023, the homeownership rate was 46.1% for African Americans compared to 75.3% for White Americans – a difference of roughly 29.2 percentage points.
+      </p>
+      <div class="chart-container">
+        <canvas id="housingChart"></canvas>
+      </div>
+      <p class="source">
+        Source: U.S. Census Bureau, Housing Vacancies and Homeownership, Q2 2023
+      </p>
+    </section>
+
+    <!-- Healthcare Disparity Section -->
+    <section id="healthcare-disparity">
+      <h2>Healthcare Disparity</h2>
+      <p>
+        Disparities are evident in healthcare access and outcomes. In 2022, 8.1% of African Americans (ages 18–64) were uninsured compared to 4.8% of White Americans. Furthermore, in 2021, life expectancy was 70.8 years for African Americans versus 76.4 years for White Americans.
+      </p>
+      <div class="chart-container">
+        <canvas id="uninsuredChart"></canvas>
+      </div>
+      <p class="source">
+        Source: CDC, National Center for Health Statistics – Uninsured Rate (2022)
+      </p>
+      <div class="chart-container">
+        <canvas id="lifeExpectancyChart"></canvas>
+      </div>
+      <p class="source">
+        Source: National Vital Statistics Reports – Life Expectancy (2021)
+      </p>
+    </section>
+
+    <!-- Criminal Justice Disparity Section -->
+    <section id="criminal-justice-disparity">
+      <h2>Criminal Justice Disparity</h2>
+      <p>
+        In 2020, the incarceration rate was 1,186 per 100k for African Americans versus 216 per 100k for White Americans. Additionally, in 2023 (year-to-date), African Americans experienced police killings at a rate approximately 2.6 times higher than the reference rate for White Americans.
+      </p>
+      <div class="chart-container">
+        <canvas id="incarcerationChart"></canvas>
+      </div>
+      <p class="source">
+        Source: Bureau of Justice Statistics, Prisoners in 2020 – Statistical Tables
+      </p>
+      <div class="chart-container">
+        <canvas id="policeKillingsChart"></canvas>
+      </div>
+      <p class="source">
+        Source: Mapping Police Violence (2023, YTD)
+      </p>
+    </section>
+  </div>
+
+  <!-- JavaScript for Charts -->
+  <script>
+    // Wealth Disparity Chart
+    const wealthCtx = document.getElementById('wealthChart').getContext('2d');
+    new Chart(wealthCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Median Net Worth ($K)',
+          data: [44.9, 285],
+          backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Value in $K' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Income Disparity Chart
+    const incomeCtx = document.getElementById('incomeChart').getContext('2d');
+    new Chart(incomeCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Median Household Income ($K)',
+          data: [52.9, 78.0],
+          backgroundColor: ['rgba(255, 159, 64, 0.7)', 'rgba(75, 192, 192, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Value in $K' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Education Disparity Chart
+    const educationCtx = document.getElementById('educationChart').getContext('2d');
+    new Chart(educationCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: "Bachelor's Degree or Higher (%)",
+          data: [30, 42],
+          backgroundColor: ['rgba(153, 102, 255, 0.7)', 'rgba(255, 205, 86, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: { display: true, text: 'Percentage (%)' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Employment Disparity Chart
+    const employmentCtx = document.getElementById('employmentChart').getContext('2d');
+    new Chart(employmentCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Unemployment Rate (%)',
+          data: [5.8, 3.3],
+          backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Percentage (%)' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Housing Disparity Chart
+    const housingCtx = document.getElementById('housingChart').getContext('2d');
+    new Chart(housingCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Homeownership Rate (%)',
+          data: [46.1, 75.3],
+          backgroundColor: ['rgba(255, 159, 64, 0.7)', 'rgba(75, 192, 192, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: { display: true, text: 'Percentage (%)' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Healthcare Disparity - Uninsured Chart
+    const uninsuredCtx = document.getElementById('uninsuredChart').getContext('2d');
+    new Chart(uninsuredCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Uninsured Rate (%)',
+          data: [8.1, 4.8],
+          backgroundColor: ['rgba(153, 102, 255, 0.7)', 'rgba(255, 205, 86, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Percentage (%)' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Healthcare Disparity - Life Expectancy Chart
+    const lifeExpectancyCtx = document.getElementById('lifeExpectancyChart').getContext('2d');
+    new Chart(lifeExpectancyCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Life Expectancy (Years)',
+          data: [70.8, 76.4],
+          backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: false,
+            title: { display: true, text: 'Years' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Criminal Justice Disparity - Incarceration Rate Chart
+    const incarcerationCtx = document.getElementById('incarcerationChart').getContext('2d');
+    new Chart(incarcerationCtx, {
+      type: 'bar',
+      data: {
+        labels: ['African Americans', 'White Americans'],
+        datasets: [{
+          label: 'Incarceration Rate (per 100k)',
+          data: [1186, 216],
+          backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(75, 192, 192, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Rate per 100k' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    // Criminal Justice Disparity - Police Killings Rate Chart
+    const policeKillingsCtx = document.getElementById('policeKillingsChart').getContext('2d');
+    new Chart(policeKillingsCtx, {
+      type: 'bar',
+      data: {
+        labels: ['White Americans (Baseline)', 'African Americans'],
+        datasets: [{
+          label: 'Relative Police Killings Rate',
+          data: [1, 2.6],
+          backgroundColor: ['rgba(75, 192, 192, 0.7)', 'rgba(255, 99, 132, 0.7)']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Relative Rate (White = 1)' }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  </script>
 </body>
 </html>
